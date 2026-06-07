@@ -124,14 +124,14 @@ else:
     ssl._create_default_https_context = _create_unverified_https_context
 
 # 2. Install pyngrok while telling pip to trust the hosts despite the missing certificate
-!pip install pyngrok --quiet --trusted-host pypi.org --trusted-host files.pythonhosted.org
+#!pip install pyngrok --quiet --trusted-host pypi.org --trusted-host files.pythonhosted.org
 
 # 3. Authenticate with ngrok (Skip SSL verification for the CLI config tool)
 # Swap in your actual token here
-!ngrok config add-authtoken 3E1wzlL9myZYT7F5Jx3LRlJSOg0_4Mc2Ao8Wx6CoFNjUaNuAE
+#!ngrok config add-authtoken 3E1wzlL9myZYT7F5Jx3LRlJSOg0_4Mc2Ao8Wx6CoFNjUaNuAE
 
 # 4. Start Streamlit cleanly in the background
-!nohup streamlit run app.py --server.enableCORS=false --server.enableXsrfProtection=false &
+#!nohup streamlit run app.py --server.enableCORS=false --server.enableXsrfProtection=false &
 
 # 5. Give the server a moment to spin up
 import time
