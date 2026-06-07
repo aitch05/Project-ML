@@ -2,7 +2,6 @@
 import streamlit as st
 import pandas as pd
 import numpy as np
-import joblib
 
 # Page Layout Configurations
 st.set_page_config(page_title="Dating Match Oracle", page_icon="🔮", layout="centered")
@@ -12,8 +11,7 @@ st.subheader("Predicting Full Relationship Outcomes via Machine Learning")
 st.write("Adjust profile configurations in the sidebar to see which `match_outcome` class the model predicts.")
 st.markdown("---")
 
-# Load your group's actual trained model file
-# 🟢 ADD THIS RIGHT INSTEAD:
+# 🟢 OPTION A: Train the model instantly on the server using your CSV file!
 @st.cache_resource
 def train_model_live():
     df = pd.read_csv("dating_app_behavior_dataset (final).csv")
@@ -42,11 +40,6 @@ def train_model_live():
     return best_pipeline
 
 trained_pipeline = train_model_live()
-
-try:
-    trained_pipeline = load_my_real_model()
-except Exception as e:
-    st.error("Could not find the 'best_multiclass_model.pkl' file.")
 
 # Sidebar input structure fields
 st.sidebar.header("👤 Profile Attributes")
